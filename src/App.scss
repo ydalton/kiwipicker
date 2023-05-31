@@ -1,0 +1,16 @@
+.station {
+    & {
+        display: flex;
+        height: 20em;
+        border-radius: 0.5em;
+        background-color: #ddd;
+    }
+    p {
+        font-size: 2em;
+        display: block;
+        margin: auto;
+        a {
+            text-decoration: none;
+        }
+    }
+}
