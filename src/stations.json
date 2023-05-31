@@ -1,0 +1,48 @@
+{
+    "stations": [
+        {
+            "name": "Carlow",
+            "link": "http://emeraldsdr.ddns.net:8073/"
+        },
+        {
+            "name": "Ireland North West",
+            "link": "http://irelandnorthwest.proxy.kiwisdr.com:8073/"
+        },
+        {
+            "name": "Stone",
+            "link": "http://kiwisdr.lamont.me.uk:8073/"
+        },
+        {
+            "name": "Adelaide 1",
+            "link": "http://kiwisdr.areg.org.au:8073/"
+        },
+        {
+            "name": "Adelaide 2",
+            "link": "http://kiwisdr.areg.org.au:8074/"
+        },
+        {
+            "name": "Mountain Top Radio",
+            "link": "http://sdr.k1vl.com:8073/"
+        },
+        {
+            "name": "Point Reyes, California",
+            "link": "http://kphsdr.com:8073/"
+        },
+        {
+            "name": "Iceland",
+            "link": "http://157.157.21.239:8080/"
+        },
+        {
+            "name": "Trent, Germany",
+            "link": "http://dl8las.dyndns.org:8073/?fbclid=IwAR3EmutSPk4homk7xK2IdGmXLTCQiFpCw0cTl1-xt3WbDcIC7GN0aUMjjoA"
+        },
+        {
+            "name": "Utah",
+            "link": "http://kiwisdr2.sdrutah.org:8074/"
+        },
+        {
+            "name": "Prince Edward Island",
+            "link": "http://vy2hf.ddns.net:8073/"
+        }
+    ]
+}
