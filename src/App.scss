@@ -1,17 +1,44 @@
-.station {
-    & {
-        display: flex;
-        height: 12.5em;
-        border-radius: 0.5em;
-        background-color: #ddd;
-        box-shadow: 0.25em 0.25em 1em rgba(0,0,0,.1);
+@use "sass:color";
+
+$bgc: #ccc;
+
+.station, .bar {
+    display: flex;
+    background-color: $bgc;
+    border-radius: 0.5em;
+    p,a {
+        display: block;
+    }
+    a {
+        text-decoration: none;
     }
     p {
         font-size: 1.5em;
-        display: block;
         margin: auto;
-        a {
-            text-decoration: none;
-        }
     }
 }
+
+.station {
+    & {
+        height: 12em;
+        box-shadow: 0.25em 0.25em 1em rgba(0,0,0,.1);
+    }
+}
+
+.bar {
+    & {
+        transition: transform 0.4s;
+        &:hover {
+            transform: translateY(-0.5em);
+        }
+    }
+    bottom: 5px;
+    height: 6em;
+    .button {
+        border-radius: 0.5em;
+        background-color: color.adjust($bgc, $lightness: 12%);
+        width: 5em;
+        display: flex;
+    }
+}
+

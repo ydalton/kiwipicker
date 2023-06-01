@@ -1,15 +1,18 @@
 import './App.scss'
-import Station from "./Components";
+import Station from "./Station";
+// import Bar from "./Bar"
 import stat from "./stations";
-
 
 function App() {
   let stations = stat['stations'];
+  if(stations == null)
+    return <p>No stations found. Try loading a different file</p>;
   return (
-    <div className="App" class="row justify-content-center">
+    <div className="App row justify-content-center">
       {stations.map(station => (
-        <Station text={station['name']} link={station['link']}/>
+        <Station key={station['link']} text={station['name']} link={station['link']}/>
       ))}
+      {/* <Bar/> */}
     </div>
   );
 }
