@@ -1,7 +1,16 @@
 import './App.scss'
 import Station from "./Station";
-// import Bar from "./Bar"
 import stat from "./stations";
+
+function AddButton() {
+  return (
+    <a href="#" class="add text-center col-11 col-lg-2 p m-2">
+      <p>
+        +
+      </p>
+    </a>
+  );
+}
 
 function App() {
   let stations = stat['stations'];
@@ -10,9 +19,11 @@ function App() {
   return (
     <div className="App row justify-content-center">
       {stations.map(station => (
-        <Station key={station['link']} text={station['name']} link={station['link']}/>
+        <Station key={station['link']}
+                 text={station['name']}
+                 link={station['link']}/>
       ))}
-      {/* <Bar/> */}
+      <AddButton/>
     </div>
   );
 }

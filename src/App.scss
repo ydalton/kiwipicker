@@ -1,44 +1,52 @@
 @use "sass:color";
 
-$bgc: #ccc;
+$bgc: #e0e0e0;
 
-.station, .bar {
-    display: flex;
-    background-color: $bgc;
-    border-radius: 0.5em;
-    p,a {
-        display: block;
-    }
-    a {
-        text-decoration: none;
-    }
+$button-size: 7em;
+$bdrad: 1em;
+
+body {
     p {
-        font-size: 1.5em;
+        font-size: 1.75em;
         margin: auto;
     }
 }
 
 .station {
-    & {
-        height: 12em;
-        box-shadow: 0.25em 0.25em 1em rgba(0,0,0,.1);
-    }
+    display: flex;
+    background-color: $bgc;
+    border-radius: 0.5em;
+    text-decoration: none;
+}
+
+.station {
+    height: 12em;
+    box-shadow: 0.25em 0.25em 1em rgba(0,0,0,.1);
 }
 
 .bar {
+    @extend .station;
     & {
-        transition: transform 0.4s;
+        transition: transform 0.5s;
         &:hover {
             transform: translateY(-0.5em);
         }
     }
-    bottom: 5px;
-    height: 6em;
+    border-radius: 0.5em;
+    bottom: 0;
+    height: auto;
+    box-shadow: 0em -1em 2em rgba(255,255,255,1);
+    left: (40%);
     .button {
         border-radius: 0.5em;
         background-color: color.adjust($bgc, $lightness: 12%);
-        width: 5em;
+        width: $button-size;
+        height: $button-size;
         display: flex;
     }
 }
 
+.add {
+    @extend .station;
+    // for now...
+}
