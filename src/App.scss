@@ -1,6 +1,6 @@
 @use "sass:color";
 
-$bgc: #e0e0e0;
+$bgc: #f0f0f0;
 
 $button-size: 7em;
 $bdrad: 1em;
@@ -17,20 +17,17 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-
-body {
-}
-
 .station, .add {
     display: flex;
     background-color: $bgc;
     border-radius: 0.75em;
     text-decoration: none;
     height: 12em;
-    box-shadow: 0.25em 0.25em 1em rgba(0,0,0,.1);
+    // box-shadow: 0.25em 0.25em 1em rgba(0,0,0,.1);
     p {
         margin: auto;
     }
+    transition: color 0.3s;
 }
 
 .file-upload {

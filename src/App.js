@@ -2,8 +2,8 @@
 
 import './App.scss'
 import Station from "./Station";
-import defaultStations from "./defaultStations";
-import { useState, changeEvent } from "react";
+// import defaultStations from "./defaultStations";
+import { useState } from "react";
 
 function AddButton() {
   return (
@@ -24,12 +24,20 @@ function App() {
 
   const fileReadHandler = (e) => {
     const content = fileReader.result;
-    const result = JSON.parse(content);
-    setStations(result['stations']);
+    let result;
+
+    try{
+      result = JSON.parse(content);
+      setStations(result['stations']);
+    } catch {
+      setStations(-1);
+    }
     console.log(result);
   }
 
   const changeHandler = (file) => {
+    if(file == null)
+      return;
     fileReader = new FileReader();
     fileReader.onloadend = fileReadHandler;
     fileReader.readAsText(file);
@@ -41,20 +49,31 @@ function App() {
     console.log(stringed);
   }
 
-  appContents = (stations == null) ? (
-    <div className="p-4">
-      <p>No stations found. Try loading a stations file.</p>
-    </div>
-  ) : (
-    <div id="stations" className="row justify-content-center">
-      {stations.map(station => (
-        <Station key={station['link']}
-                text={station['name']}
-                link={station['link']}/>
-      ))}
-      <AddButton/>
-    </div>
-  );
+  switch(stations) {
+    case null:
+    case -1: {
+      let errString = (stations == -1)
+          ? "An error occurred. Please load a valid station file."
+          : "No stations found. Try loading a stations file.";
+      appContents =  (
+        <div className="p-4">
+          <p>{errString}</p>
+        </div>
+      );
+    } break;
+    default: {
+      appContents = (
+        <div id="stations" className="row justify-content-center">
+          {stations.map(station => (
+            <Station key={station['link']}
+                    text={station['name']}
+                    link={station['link']}/>
+          ))}
+          <AddButton/>
+        </div>
+      );
+    } break;
+  }
 
   return (
     <div className="App ">
@@ -66,7 +85,6 @@ function App() {
                accept=".json"
                onChange={e => changeHandler(e.target.files[0])}
                className="m-2"/>
-        <br/>
         <br/>
         <button onClick={saveHandler} className="m-2">
           Save file
