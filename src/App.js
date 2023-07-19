@@ -29,41 +29,36 @@ export default function App() {
   }
 
   function Popup() {
-    let output;
-
     const addHandler = (e) => {
-      console.log("Not implemented, sorry.");
       setStations(arr => [...arr, {name: stationName, link: stationLink}]);
       isPopupVisible(false);
     }
 
-    if(popupVisible)
-      output = (
-        <div id="bg-shadow">
-          <div className="popup p-4">
-            <p>Add new station</p>
-            <form onSubmit={addHandler}>
-              <label>Name</label>
-              <input className="m-1"
-                     type="text"
-                     name="name"
-                     onChange={(e) => stationName = e.target.value}
-                     id="name"/>
-              <br/>
-              <label>Link</label>
-              <input className="m-1"
-                     type="text"
-                     name="link"
-                     onChange={(e) => stationLink = e.target.value}
-                     id="link"/>
-              <br/>
-              <input type="submit" value="Submit" />
-            </form>
-            <a id="close-btn" href="#" onClick={() => isPopupVisible(false)}>x</a>
-          </div>
+    return (
+      <div id="bg-shadow" className={(popupVisible) ? "" : "d-none"}>
+        <div className="popup p-4">
+          <p>Add new station</p>
+          <form onSubmit={addHandler}>
+            <label>Name</label>
+            <input className="m-1"
+                  type="text"
+                  name="name"
+                  onChange={(e) => stationName = e.target.value}
+                  id="name"/>
+            <br/>
+            <label>Link</label>
+            <input className="m-1"
+                  type="text"
+                  name="link"
+                  onChange={(e) => stationLink = e.target.value}
+                  id="link"/>
+            <br/>
+            <input type="submit" value="Submit" />
+          </form>
+          <a id="close-btn" href="#" onClick={() => isPopupVisible(false)}>x</a>
         </div>
-      );
-    return output;
+      </div>
+    );
   }
 
   const changeHandler = (file) => {
@@ -81,7 +76,7 @@ export default function App() {
       console.log("saveHandler: file not loaded or is empty, bailing...");
       return;
     }
-    let stringed =`{"stations": ${JSON.stringify(stations)}}`;
+    let stringed =`{"stations": ${JSON.stringify(stations)}}\n`;
     // hack, but it works
     let element = document.createElement('a');
     const file = new Blob([stringed], {type: "application/json;charset=utf-8"});
