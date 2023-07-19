@@ -110,6 +110,7 @@ export default function App() {
           {stations.map(station => (
             <Station key={station['link']}
                     text={station['name']}
+                    target="_blank"
                     link={station['link']}/>
           ))}
           <AddButton/>
