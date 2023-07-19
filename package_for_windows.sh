@@ -24,7 +24,6 @@ rm $python_zip
 echo "Writing startup file..."
 cat <<EOF >> start.bat
 @echo off
-@echo off
 START /B .\bin\python.exe -m http.server
 .\bin\python.exe -c "import webbrowser as wb; wb.open('http://localhost:8000')"
 EOF
