@@ -10,6 +10,9 @@ body {
     p {
         font-size: 1.75em;
     }
+    a {
+        text-decoration: none;
+    }
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
         'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -17,13 +20,17 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-.station, .add {
-    display: flex;
+
+@mixin the-base {
     background-color: $bgc;
-    border-radius: 0.75em;
-    text-decoration: none;
+    border-radius: $bdrad;
+    background-color: #f0f0f0;
+}
+
+.station, .add {
+    @include the-base;
+    display: flex;
     height: 12em;
-    // box-shadow: 0.25em 0.25em 1em rgba(0,0,0,.1);
     p {
         margin: auto;
     }
@@ -31,6 +38,28 @@ body {
 }
 
 .file-upload {
-    background-color: #f0f0f0;
-    border-radius: 0.75em;
+    @include the-base;
+}
+
+.popup {
+    @include the-base;
+    position: fixed;
+    box-shadow: 0.25em 0.25em 1em rgba(0,0,0,.1);
+    top: 40%;
+    left: 40%;
+    #close-btn {
+        position: absolute;
+        top: 1em;
+        right: 1em;
+    }
+}
+
+#bg-shadow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9001;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0, .4);
 }
